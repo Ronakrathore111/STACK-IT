@@ -15,12 +15,7 @@ Just like a *stack* of information or the term “tech stack,” the name reflec
 The platform focuses on tech-related Q&A (or any topic you choose), so “IT” connects the app to the world of technology and problem-solving.
 
 👉 Combined, **Stack-IT** means *a place to stack, share, and organize knowledge — especially related to technology*.
-
-## 🌐 Live Demo
-
-Your project is deployed here:
-
-Use this link to explore and test the live version of Stack-IT.
+.
 ---
 
 ## 🚀 Features
