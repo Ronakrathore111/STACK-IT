@@ -1,96 +1,104 @@
-# Stack-IT
+# 📘 QueryHub
 
-A simple Question & Answer web application built with Node.js, Express, and plain HTML/CSS/JS — a lightweight Q&A platform.
+> **A central hub for asking, sharing, and solving questions.**
 
----
+QueryHub is a simple, lightweight Question & Answer web application built using the MERN stack principles (Node.js, Express, MongoDB) and vanilla HTML/CSS/JS. It provides a platform where users can ask questions, share knowledge, and solve doubts within a community.
 
-## 📘 Meaning of the Name “Stack-IT”
+## 🌟 Meaning of the Name
+**QueryHub** represents a central place where people can ask questions (“queries”) and receive answers.
+* **Query** → Questions, doubts, and problems.
+* **Hub** → A central place where knowledge is shared.
+* ## 🌍 Live Deployment
 
-**Stack-IT** is inspired by two ideas:
+QueryHub is deployed on Render. You can view the live demo here:
 
-### **1. “Stack” → A collection of questions, answers, and knowledge**
-Just like a *stack* of information or the term “tech stack,” the name reflects a place where knowledge is organized, stored, and easily accessible.
-
-### **2. “IT” → Information Technology**
-The platform focuses on tech-related Q&A (or any topic you choose), so “IT” connects the app to the world of technology and problem-solving.
-
-👉 Combined, **Stack-IT** means *a place to stack, share, and organize knowledge — especially related to technology*.
-.
----
+👉 **https://queryhub-ht9p.onrender.com**
 
 ## 🚀 Features
+* **User Authentication:** Secure registration and login using JWT & bcryptjs.
+* **Ask Questions:** Users can post their own questions to the community.
+* **Share Knowledge:** Users can answer questions posted by others.
+* **Browse Content:** View a list of all questions or dive into specific discussions.
+* **Modern UI:** Simple, clean, and responsive user interface.
 
-- User registration and login  
-- Users can post questions and answers  
-- View list of all questions  
-- View individual question with its answers  
-- Basic comment / answer submission support  
-- Minimal styling with HTML/CSS/JS  
+## 🛠 Tech Stack
+
+| Component | Technology |
+| :--- | :--- |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB (with Mongoose) |
+| **Authentication** | JSON Web Tokens (JWT) + bcryptjs |
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript |
 
 ## 📁 Project Structure
 
+```bash
+QueryHub/
+│
+├── css/                # Stylesheets (Auth & Main styles)
+├── js/                 # Client-side JavaScript logic
+├── middleware/         # Authentication middleware
+├── models/             # Mongoose Database schemas
+├── routes/             # Express API route handlers
+│
+├── ask.html            # Page to post a new question
+├── index.html          # Homepage (Feed of questions)
+├── login.html          # User login page
+├── register.html       # User registration page
+├── question.html       # Single question view with answers
+│
+├── server.js           # Main server entry point
+└── package.json        # Project dependencies & scripts
 ```
-Stack-IT/
-├── css/             – stylesheets  
-├── js/              – client-side JS (if any)  
-├── middleware/      – custom middleware (authentication, request handling, etc.)  
-├── models/          – data models / database schemas  
-├── routes/          – route handlers for different endpoints  
-├── .gitignore  
-├── ask.html         – page to submit a new question  
-├── index.html       – home / list of questions  
-├── login.html       – login form  
-├── register.html    – user registration form  
-├── question.html    – page to view a question and its answers  
-├── view.html        – (optional) view submitted question/answer or details  
-├── server.js        – main server file (Express app)  
-└── package.json     – project metadata and dependencies  
+## ⚙️ Installation & Local Setup
+
+Follow these steps to run the project locally on your machine.
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/Ronakrathore111/Queryhub.git
+cd Queryhub
 ```
 
-## 📦 Dependencies
+### 2️⃣ Install dependencies
 
-- [Express.js](https://expressjs.com/) — Web server / routing  
-- [MongoDB / Mongoose] (if using Mongo) — Database (if configured)  
-- body-parser / express built-in middleware — Parsing request bodies  
-- (Any other dependencies listed in `package.json`)  
+```bash
+npm install
+```
 
-## ✅ Setup & Run Locally
+### 3️⃣ Environment Setup
 
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/Ronakrathore111/Stack-IT.git
-   cd Stack-IT
-   ```  
-2. Install dependencies  
-   ```bash
-   npm install
-   ```  
-3. Configure database (if applicable) — set up MongoDB / or your preferred database and update database config in `models/` or `server.js`.  
-4. Start the server  
-   ```bash
-   node server.js
-   ```  
-5. Open your browser and go to `http://localhost:3000` (or whichever port configured)  
+Create a `.env` file in the root directory and add the following:
 
-## 🎯 How to Use
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_jwt_key
+```
 
-- Register a new account or login  
-- Post a new question via **ask.html**  
-- View list of all questions on **index.html**  
-- Click on a question to see details and answers — on **question.html**  
-- Add answer / comment (if logged in)
-- Upvote/downvote content  
+### 4️⃣ Start the server
 
-## 📝 To-Do / Future Improvements
+```bash
+npm start
+```
+The server will run at: `http://localhost:5000`
 
-- Rich text editor for formatted questions/answers  
-- User profiles with stats (reputation, badges)  
-- Accept “best answer” feature  
-- Search bar for questions  
-- Pagination for large lists  
-- Improved UI/UX (responsive design)  
-- REST API + modern frontend (React, Next.js)
+---
+> ⚠️ If the app is sleeping, it may take 30–60 seconds to wake up on the first visit.
+---
+## 📌 How to Use
 
-## 💡 Why This Project
+- **Register:** Create a new account  
+- **Login:** Access your account securely  
+- **Post:** Ask a question about any topic  
+- **Answer:** Help others by answering their questions  
+---
+## 🔮 Future Improvements
+- [ ] Rich text editor for questions/answers  
+- [ ] User profiles & reputation points  
+- [ ] “Best Answer” selection feature  
+- [ ] Search functionality  
+- [ ] Pagination for question feed  
+- [ ] Mobile responsiveness enhancements  
 
-This project aims to provide a minimal, easy-to-understand Q&A platform — useful for learning, experimentation, or quick deployment — without complex dependencies or heavy frameworks. It’s a good base for extending into a fully-fledged forum / Q&A site by adding needed features on top.
+
