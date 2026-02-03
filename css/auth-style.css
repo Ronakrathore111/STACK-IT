@@ -1,160 +1,230 @@
-/* Reset and Base */
+/* --- Reset & Base --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif; /* Modern Font */
 }
 
 body {
-  background: linear-gradient(135deg, #4a90e2 0%, #145c9a 100%);
+  background-color: #0f172a; /* Dark modern base */
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  color: #333;
+  overflow: hidden; /* Hide scrollbars from moving shapes */
+  position: relative;
 }
 
-/* Container */
+/* --- Animated Background Shapes --- */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px); /* Creates the glow effect */
+  opacity: 0.8;
+  animation: float 10s infinite alternate;
+}
+
+/* Large Blue Orb */
+.circle-one {
+  height: 400px;
+  width: 400px;
+  background: linear-gradient(#1845ad, #23a2f6);
+  top: -50px;
+  left: -50px;
+  animation-delay: 0s;
+}
+
+/* Large Orange/Pink Orb for contrast */
+.circle-two {
+  height: 350px;
+  width: 350px;
+  background: linear-gradient(to right, #ff512f, #f09819);
+  bottom: -50px;
+  right: -50px;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}
+
+/* --- Glassmorphism Container --- */
 .container {
   width: 100%;
-  max-width: 420px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  animation: fadeIn 0.7s ease-in-out;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1); /* See-through white */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  backdrop-filter: blur(15px); /* The frost effect */
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  color: #fff;
+  animation: slideIn 0.8s ease-out;
 }
 
-/* Toggle Buttons */
-.toggle-btns {
-  display: flex;
-  background: #f4f6fb;
-  border-radius: 12px 12px 0 0;
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.btn {
-  flex: 1;
-  padding: 16px 0;
-  border: none;
-  background: transparent;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  color: #6b7a99;
-  transition: color 0.3s, background-color 0.3s;
-  letter-spacing: 0.5px;
-  border-bottom: 3px solid transparent;
-}
-
-.btn:hover {
-  color: #145c9a;
-}
-
-.btn.active {
-  color: #145c9a;
-  background: white;
-  border-bottom: 3px solid #4a90e2;
-  box-shadow: inset 0 -3px 0 #4a90e2;
-  border-radius: 12px 12px 0 0;
-}
-
-/* Forms */
-.form {
-  padding: 36px 32px;
-  display: none;
-  animation: fadeIn 0.5s ease forwards;
-}
-
-.form.active {
-  display: block;
+/* --- Typography --- */
+.active-title {
+    text-align: center;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 h2 {
   text-align: center;
-  color: #222;
-  font-weight: 700;
-  margin-bottom: 28px;
-  letter-spacing: 1.2px;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #ffffff;
 }
 
-/* Inputs */
-input {
-  width: 100%;
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  border: 1.8px solid #d1d9e6;
-  font-size: 15px;
-  transition: border-color 0.3s;
-  color: #333;
+.sub-text {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 30px;
 }
 
-input::placeholder {
-  color: #8193b2;
-  letter-spacing: 0.4px;
+/* --- Modern Floating Inputs --- */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
 }
 
-input:focus {
-  border-color: #4a90e2;
-  outline: none;
-  box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+.input-group input {
+    width: 100%;
+    padding: 15px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
 }
 
-/* Buttons */
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    color: rgba(255,255,255,0.6);
+    pointer-events: none;
+    transition: 0.3s ease all;
+    font-size: 15px;
+}
+
+/* Animation: When input is focused or has valid text */
+.input-group input:focus,
+.input-group input:valid {
+    border-bottom-color: #23a2f6;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -10px;
+    left: 0;
+    font-size: 12px;
+    color: #23a2f6;
+    font-weight: 600;
+}
+
+/* --- Button --- */
 button {
   width: 100%;
-  padding: 14px 0;
-  background: #4a90e2;
+  padding: 15px;
+  background: linear-gradient(45deg, #1845ad, #23a2f6);
   border: none;
-  color: white;
-  font-weight: 700;
-  font-size: 16px;
   border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(35, 162, 246, 0.4);
 }
 
 button:hover {
-  background: #357abd;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(35, 162, 246, 0.6);
 }
 
-/* Links */
-.forgot, .links a {
-  display: inline-block;
-  color: #4a90e2;
-  font-size: 14px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.3s;
-  margin-top: 12px;
-}
-
-.forgot:hover, .links a:hover {
-  color: #357abd;
-}
-
+/* --- Links --- */
 .links {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.text-muted {
+    color: rgba(255,255,255,0.5);
 }
 
-/* Responsive */
+.links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  text-decoration: underline;
+  color: #23a2f6;
+}
+
+/* --- Responsive --- */
 @media (max-width: 480px) {
   .container {
-    max-width: 100%;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .form {
-    padding: 28px 20px;
+    padding: 30px 20px;
+    width: 90%;
   }
 }
+/* =========================================
+   ADD THIS TO THE BOTTOM OF auth-style.css
+   ========================================= */
+
+/* Register Page Specific Backgrounds */
+
+/* Large Purple Orb (Top Right) */
+.circle-three {
+  height: 400px;
+  width: 400px;
+  background: linear-gradient(#9b59b6, #8e44ad); /* Purple Gradient */
+  top: -80px;
+  right: -80px; /* Positioned differently than login */
+  animation-delay: -2s;
+}
+
+/* Large Pink/Red Orb (Bottom Left) */
+.circle-four {
+  height: 350px;
+  width: 350px;
+  background: linear-gradient(to right, #ff416c, #ff4b2b); /* Pink/Red Gradient */
+  bottom: -60px;
+  left: -60px;
+  animation-delay: -7s;
+}
+
+/* Optional: Make the Register Button a different color to match */
+/* You can add a specific class to the button if you want, 
+   but the blue one works well for contrast too. */

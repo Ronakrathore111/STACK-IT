@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ask a Question – StackIt</title>
+  <title>Ask a Question – QueryHub</title>
   <link rel="stylesheet" href="css/ask-styles.css" />
   <script>
-    // Redirect if not logged in
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Please login first to ask a question.");
@@ -15,7 +14,7 @@
 </head>
 <body>
   <nav>
-    <h1>StackIt</h1>
+    <h1>QueryHub</h1>
     <a href="index.html">Home</a>
     <button onclick="logout()">Logout</button>
   </nav>
