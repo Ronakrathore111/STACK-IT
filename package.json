@@ -1,7 +1,7 @@
 {
   "name": "stackit-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple Question & Answer web application built with Node.js, Express, and plain HTML/CSS/JS — a lightweight Q&A platform.",
   "main": "server.js",
   "dependencies": {
     "accepts": "^2.0.0",
@@ -142,5 +142,6 @@
   "bugs": {
     "url": "https://github.com/Ronakrathore111/STACK-IT/issues"
   },
-  "homepage": "https://github.com/Ronakrathore111/STACK-IT#readme"
+  "homepage": "https://github.com/Ronakrathore111/STACK-IT#readme",
+  "devDependencies": {}
 }
