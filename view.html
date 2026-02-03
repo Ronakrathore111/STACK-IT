@@ -1,47 +1,63 @@
-<!-- stackit-frontend/view.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Question – QueryHub</title>
-  <link rel="stylesheet" href="css/view-styles.css" />
+  
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <nav>
-    <h1><a href="index.html">QueryHub</a></h1>
-    <a href="ask.html">Ask</a>
-    <a href="login.html" id="login-btn">Login</a>
-    <button onclick="logout()" id="logout-btn" style="display:none;">Logout</button>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1><a href="index.html">QueryHub</a></h1>
+    </div>
+    <div class="nav-right">
+      <a class="nav-btn" href="ask.html">Ask Question</a>
+      <a class="nav-btn-outline" href="index.html">Home</a>
+      <button onclick="logout()" id="logout-btn" class="nav-btn-outline" style="display:none;">Logout</button>
+    </div>
   </nav>
 
-  <main>
-    <section id="question-section">
-      <h2 id="q-title"></h2>
-      <p id="q-description"></p>
-      <p id="q-tags"></p>
-      <p id="q-author"></p>
+  <main class="view-container">
+    
+    <section id="question-section" class="glass-panel question-detail">
+      <div class="header-row">
+        <h2 id="q-title">Loading Question...</h2>
+      </div>
+
+      <div class="meta-row">
+        <span class="author-pill"><i class="fas fa-user"></i> <span id="q-author">User</span></span>
+        <span id="q-tags" class="tags-container"></span>
+      </div>
+
+      <div class="content-box">
+        <p id="q-description"></p>
+      </div>
     </section>
 
-    <hr />
-
-    <section id="answers-section">
-      <h3>Answers</h3>
-      <div id="answers-list"></div>
+    <section id="answers-section" class="answers-section">
+      <h3 class="section-heading">Community Answers</h3>
+      <div id="answers-list" class="answers-grid">
+        </div>
     </section>
 
-    <hr />
-
-    <section id="answer-form-section">
-      <h3>Your Answer</h3>
+    <section id="answer-form-section" class="glass-panel answer-form-panel">
+      <h3><i class="fas fa-pen"></i> Your Answer</h3>
       <form id="answer-form">
-        <textarea id="answer-input" rows="5" required></textarea><br />
-        <button type="submit">Post Answer</button>
+        <div class="input-wrapper">
+          <textarea id="answer-input" rows="6" placeholder="Write a helpful answer..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Post Answer</button>
       </form>
-      <p id="answer-error" style="color:red;"></p>
+      <p id="answer-error" class="error-msg"></p>
     </section>
+
   </main>
 
   <script src="js/util.js"></script>
-  <script src="js/view.js"></script>
+  <script src="js/view.js"></script> 
 </body>
 </html>

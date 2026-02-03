@@ -1,254 +1,495 @@
-/* CRAZY Homepage CSS - StackIt Q&A */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+/* --- Modern "Enhanced" Theme --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
+/* 1. Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 2. Enhanced Background & Faster Animation */
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  
+  /* Layer 1: A subtle dot pattern overlay for a "Tech/Space" look */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px; /* Distance between dots */
+  
+  /* Layer 2: The Deep Gradient behind the dots */
+  background-color: #0f172a; /* Fallback */
+  background: 
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0f172a);
+    
+  background-size: 30px 30px, 400% 400%; /* Resize dots vs gradient */
+  
+  /* ANIMATION SPEED: Changed from 15s to 8s (Faster) */
+  animation: gradientShift 8s ease infinite;
+  
   min-height: 100vh;
-  overflow-x: hidden;
+  color: #fff;
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-position: 0 0, 0% 50%; }
+  50% { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0, 0% 50%; }
 }
 
-/* Floating Particles */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
-  background-repeat: repeat;
-  background-size: 200px 100px;
-  animation: floatParticles 20s linear infinite;
-  z-index: -1;
-}
-
-@keyframes floatParticles {
-  from { transform: translateY(0px) rotate(0deg); }
-  to { transform: translateY(-100px) rotate(360deg); }
-}
-
-/* Navbar - Neon Glow */
+/* 3. The Glass Navbar */
 .navbar {
   position: sticky;
   top: 0;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 1rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 5%;
   z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  
+  /* Darker Glass Effect */
+  background: rgba(15, 23, 42, 0.8); 
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left h1 a {
-  font-size: 2.2rem;
-  font-weight: 800;
-  background: linear-gradient(45deg, #fff, #f0f8ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
   text-decoration: none;
-  text-shadow: 0 0 30px rgba(255,255,255,0.5);
-  animation: neonPulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes neonPulse {
-  from { filter: drop-shadow(0 0 5px #fff); }
-  to { filter: drop-shadow(0 0 20px #fff) drop-shadow(0 0 30px #4ecdc4); }
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
 
 .nav-right {
   display: flex;
-  gap: 1.5rem;
+  gap: 15px;
   align-items: center;
 }
 
-.nav-btn, .nav-btn-outline {
-  padding: 12px 28px;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  overflow: hidden;
-}
-
+/* 4. Modern Buttons */
 .nav-btn {
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6); /* Electric Blue to Purple */
   color: white;
-  box-shadow: 0 8px 25px rgba(255,107,107,0.4);
-}
-
-.nav-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 15px 35px rgba(255,107,107,0.6);
+  padding: 10px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: opacity 0.3s;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); /* Glow effect */
 }
 
 .nav-btn-outline {
   background: transparent;
   color: white;
-  border: 2px solid rgba(255,255,255,0.8);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 10px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.nav-btn-outline:hover {
-  background: rgba(255,255,255,0.2);
+.nav-btn:hover, .nav-btn-outline:hover {
+  opacity: 0.9;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Main Content */
+/* 5. Main Layout */
 main {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 5%;
+  padding: 40px 20px;
 }
 
 .page-title {
-  font-size: 3rem;
-  font-weight: 800;
   text-align: center;
-  margin-bottom: 4rem;
-  background: linear-gradient(45deg, #fff, #f0f8ff, #e0f2fe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 40px rgba(255,255,255,0.3);
-  animation: titleGlow 3s ease-in-out infinite alternate;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-@keyframes titleGlow {
-  from { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
-  to { filter: drop-shadow(0 0 30px rgba(78,205,196,0.8)); }
-}
-
-/* Questions Grid */
+/* 6. The Grid Container (Flexible for your JS) */
 .questions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 2.5rem;
-  padding-bottom: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  width: 100%;
 }
 
+/* 7. The Question Card (White Box / Safe Mode) */
+/* Text color forced to #333 so it remains visible against white card */
 .question-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 2.5rem;
-  box-shadow: 
-    0 25px 50px rgba(0,0,0,0.15),
-    0 0 0 1px rgba(255,255,255,0.5);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255,255,255,0.2);
+  background-color: #ffffff; 
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow */
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #333; 
+  transition: transform 0.2s, box-shadow 0.2s;
   position: relative;
   overflow: hidden;
 }
 
+/* Add a colored accent line to the top of the card */
 .question-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
 .question-card:hover {
-  transform: translateY(-15px) rotateX(5deg);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure links inside the white card are the correct color */
+.question-card a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+}
+/* --- 7. The Question Card (Glassmorphism Upgrade) --- */
+
+.question-card {
+  /* Glass Effect */
+  background: rgba(30, 41, 59, 0.7); /* Semi-transparent dark blue */
+  backdrop-filter: blur(12px);         /* The blur "frosting" */
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+  border-radius: 16px;
+  padding: 25px;
+  
+  /* Text Colors (Must be light to read on dark glass) */
+  color: #e2e8f0; 
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Animation: Lift & Glow */
+.question-card:hover {
+  transform: translateY(-8px);
+  background: rgba(30, 41, 59, 0.9); /* Slightly less transparent on hover */
+  border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 40px 80px rgba(0,0,0,0.25),
-    0 0 0 1px rgba(255,255,255,0.8);
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(59, 130, 246, 0.2); /* Blue glow */
 }
 
-.question-title {
-  font-size: 1.4rem;
+/* The "Glow Line" at the top */
+.question-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  opacity: 0.8;
+}
+
+/* --- Typography Inside the Card --- */
+
+/* 1. The Question Title */
+.question-card h3, 
+.question-card .question-title { 
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 1rem;
-  line-height: 1.4;
+  margin-bottom: 12px;
+  color: #fff; /* Force title to white */
+  text-decoration: none;
+  display: block;
+  letter-spacing: 0.5px;
 }
 
-.question-meta {
+.question-card h3:hover,
+.question-card .question-title:hover {
+  background: linear-gradient(90deg, #60a5fa, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 2. The Question Body Text (Description) */
+.question-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cbd5e1; /* Light grey for easy reading */
+  margin-bottom: 20px;
+}
+
+/* 3. Tags (The pills) */
+.question-card .tags,
+.question-card .question-meta {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto; /* Pushes tags to bottom if flex container */
 }
 
-.meta-tag {
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 13px;
+.question-card .tag,
+.question-card .meta-tag {
+  font-size: 0.75rem;
   font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 50px;
+  
+  /* Glass Tag Style */
+  background: rgba(59, 130, 246, 0.15); /* Faint blue bg */
+  color: #60a5fa; /* Bright blue text */
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.answers-count {
-  color: #4a5568;
+/* 4. Links / "View Question" Buttons */
+.question-card a {
+  color: #8b5cf6; /* Purple link */
   font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .questions-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .page-title {
-    font-size: 2.2rem;
-  }
-  
-  .nav-right {
-    gap: 1rem;
-  }
-  
-  .question-card {
-    padding: 2rem;
-  }
+.question-card a:hover {
+  color: #c084fc; /* Light purple on hover */
+  text-decoration: underline;
+}
+/* =========================================
+   ADD THIS TO THE BOTTOM OF css/styles.css
+   ========================================= */
+
+/* --- View Page Container --- */
+.view-container {
+    max-width: 900px; /* Narrower reading width is better for text */
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-@media (max-width: 480px) {
-  .navbar {
-    padding: 1rem 5%;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .nav-right {
+/* --- Shared Glass Panel Style --- */
+.glass-panel {
+    background: rgba(30, 41, 59, 0.7); /* Dark Glass */
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 35px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top Glow Line for Question */
+.question-detail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4); /* Blue-Cyan */
+}
+
+/* Top Glow Line for Answer Form */
+.answer-form-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #8b5cf6, #ec4899); /* Purple-Pink */
+}
+
+/* --- Question Typography --- */
+#q-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.content-box p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cbd5e1; /* Light Grey (Readable) */
+    margin-bottom: 20px;
+}
+
+/* --- Meta Data (Author, Tags) --- */
+.meta-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.tags-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Tags Style (Matches Homepage) */
+.tags-container span, .tag {
+    background: rgba(6, 182, 212, 0.15);
+    color: #22d3ee; /* Cyan Text */
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(34, 211, 238, 0.3);
+}
+
+/* --- Answers Section --- */
+.section-heading {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    border-left: 5px solid #3b82f6;
+    padding-left: 15px;
+}
+
+/* Single Answer Card Style */
+.answer-card {
+    background: rgba(255, 255, 255, 0.05); /* Slight white tint */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    color: #e2e8f0;
+}
+
+/* --- Post Answer Form --- */
+.answer-form-panel h3 {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.input-wrapper textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-wrapper textarea:focus {
+    border-color: #8b5cf6; /* Purple focus border */
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.submit-btn {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #8b5cf6, #ec4899);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
+}
+/* --- Vote Buttons (Thumbs Up/Down) --- */
+.vote-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
     justify-content: center;
-  }
+}
+
+/* Thumbs Up (Green) */
+.up-btn {
+    color: #94a3b8; /* Default grey */
+}
+.up-btn:hover {
+    background: rgba(74, 222, 128, 0.2); /* Light Green BG */
+    color: #4ade80; /* Bright Green Icon */
+    border-color: #4ade80;
+    transform: translateY(-2px);
+}
+
+/* Thumbs Down (Red) */
+.down-btn {
+    color: #94a3b8; /* Default grey */
+}
+.down-btn:hover {
+    background: rgba(248, 113, 113, 0.2); /* Light Red BG */
+    color: #f87171; /* Bright Red Icon */
+    border-color: #f87171;
+    transform: translateY(-2px);
+}
+/* =========================================
+   FORCE FIX: ASK PAGE INPUT STYLES
+   ========================================= */
+
+/* Target the inputs specifically inside the Ask Form */
+#ask-form input, 
+#ask-form textarea {
+    background-color: rgba(0, 0, 0, 0.3) !important; /* Dark transparent bg */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* Subtle border */
+    color: #ffffff !important; /* White text */
+    padding: 15px !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    outline: none !important;
+    font-family: 'Inter', sans-serif !important;
+    margin-top: 5px;
+}
+
+/* Change border color when you click to type */
+#ask-form input:focus, 
+#ask-form textarea:focus {
+    border-color: #3b82f6 !important; /* Blue border */
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Slightly darker */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2) !important; /* Blue glow */
+}
+
+/* Style the placeholder text (the gray example text) */
+#ask-form input::placeholder, 
+#ask-form textarea::placeholder {
+    color: #94a3b8 !important; /* Light grey */
+    opacity: 1;
+}
+
+/* Add spacing between the label and the input */
+.helper-text {
+    margin-bottom: 8px !important;
+    display: block;
 }

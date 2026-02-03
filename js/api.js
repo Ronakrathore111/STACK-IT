@@ -1,6 +1,8 @@
 // stackit-frontend/js/api.js
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = window.location.hostname === "localhost"
+  ? "http://localhost:5000/api"
+  : "https://queryhub.onrender.com/api";
 
 async function fetchJSON(url, options = {}) {
   const res = await fetch(url, options);
@@ -19,16 +21,19 @@ function authHeaders() {
 
 window.api = {
   fetchQuestions: () => fetchJSON(`${API_BASE}/questions`),
+
   login: (data) => fetchJSON(`${API_BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   }),
+
   register: (data) => fetchJSON(`${API_BASE}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   }),
+
   askQuestion: (data) => fetchJSON(`${API_BASE}/questions/ask`, {
     method: 'POST',
     headers: {
@@ -37,5 +42,6 @@ window.api = {
     },
     body: JSON.stringify(data)
   }),
+
   fetchQuestionById: (id) => fetchJSON(`${API_BASE}/questions/${id}`),
 };
